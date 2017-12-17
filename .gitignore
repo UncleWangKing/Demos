@@ -1,3 +1,7 @@
 .idea
-/target
 *.md
+*.iml
+target/
+RpcClient/target/
+RpcService/target/
+src/main/java/test/

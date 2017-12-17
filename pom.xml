@@ -3,9 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cn.com.liuwang</groupId>
   <artifactId>demos</artifactId>
-  <packaging>war</packaging>
+  <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>play Maven Webapp</name>
+	<modules>
+		<module>RpcService</module>
+		<module>RpcClient</module>
+	</modules>
+	<name>play Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <properties>
