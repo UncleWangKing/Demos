@@ -17,7 +17,7 @@
 
 	<!-- 对那个父包和后代包进行扫描：解析注解 -->
 	<!-- @Component非后面三层, @Repository持久层, @Service业务逻辑层, and @Controller控制器层 -->
-	<context:component-scan base-package="cn.play" />
+	<context:component-scan base-package="cn.demo" />
 
 	<!-- 必须写classpath:跑web报错 -->
 	<context:property-placeholder location = "classpath:jdbc.properties" />
@@ -56,10 +56,10 @@
 		<!-- 同ssh的配置：加载映射文件 -->
 		<!-- 要求：1.必须使用前缀classpath*，2.必须使用通配符 -->
 		<property name="mapperLocations"
-				  value="classpath*:cn/play/sysuser/mapper/*Mapper.xml" />
+				  value="classpath*:cn/demo/sysuser/mapper/*Mapper.xml" />
 		<!-- 同ssh的配置：加载mybatis其他配置信息 -->
 		<!-- 配置别名：直接给一个包添加别名 -->
-		<property name="typeAliasesPackage" value="cn.play.sysuser.domain" />
+		<property name="typeAliasesPackage" value="cn.demo.sysuser.domain" />
 	</bean>
 
 	<bean id="transactionManager"
@@ -72,6 +72,6 @@
 
 	<!-- 一劳永逸配置映射器接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.play.sysuser.mapper" />
+		<property name="basePackage" value="cn.demo.sysuser.mapper" />
 	</bean>
 </beans>

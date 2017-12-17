@@ -1,7 +1,7 @@
-package cn.play.sysuser.controller;
+package cn.demo.sysuser.controller;
 
-import cn.play.sysuser.domain.User;
-import cn.play.sysuser.service.IUserService;
+import cn.demo.sysuser.domain.User;
+import cn.demo.sysuser.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

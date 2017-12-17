@@ -1,4 +1,4 @@
-package cn.play.main.controller;
+package cn.demo.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,8 @@
-package cn.play.sysuser.mapper;
+package cn.demo.sysuser.mapper;
 
 import java.util.List;
 
-import cn.play.sysuser.domain.User;
+import cn.demo.sysuser.domain.User;
 
 public interface UserMapper {
 

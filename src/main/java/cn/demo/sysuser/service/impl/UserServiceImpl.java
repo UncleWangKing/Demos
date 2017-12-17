@@ -1,8 +1,8 @@
-package cn.play.sysuser.service.impl;
+package cn.demo.sysuser.service.impl;
 
-import cn.play.sysuser.domain.User;
-import cn.play.sysuser.mapper.UserMapper;
-import cn.play.sysuser.service.IUserService;
+import cn.demo.sysuser.domain.User;
+import cn.demo.sysuser.mapper.UserMapper;
+import cn.demo.sysuser.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

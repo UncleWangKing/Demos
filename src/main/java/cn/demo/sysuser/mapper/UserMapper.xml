@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace： 命名空间===放置的包一致 -->
-<mapper namespace="cn.play.sysuser.mapper.UserMapper">
+<mapper namespace="cn.demo.sysuser.mapper.UserMapper">
 
 	<select id="get" parameterType="long" resultType="User">
 		select * from sys_user where id=#{id}

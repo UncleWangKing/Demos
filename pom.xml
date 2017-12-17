@@ -9,7 +9,7 @@
 		<module>RpcService</module>
 		<module>RpcClient</module>
 	</modules>
-	<name>play Maven Webapp</name>
+	<name>demos Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <properties>
@@ -135,7 +135,7 @@
 		  <!-- jackson end -->
   </dependencies>
   <build>
-    <finalName>play</finalName>
+    <finalName>demos</finalName>
 	  <resources>
 		  <resource>
 			  <directory>src/main/java</directory>

@@ -1,4 +1,4 @@
-package cn.play.sysuser.domain;
+package cn.demo.sysuser.domain;
 
 import org.apache.ibatis.type.Alias;
 

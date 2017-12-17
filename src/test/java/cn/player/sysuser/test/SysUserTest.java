@@ -1,7 +1,7 @@
 package cn.player.sysuser.test;
 
-import cn.play.sysuser.controller.SysUserController;
-import cn.play.sysuser.service.IUserService;
+import cn.demo.sysuser.controller.SysUserController;
+import cn.demo.sysuser.service.IUserService;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;

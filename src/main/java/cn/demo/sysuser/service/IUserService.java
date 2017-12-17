@@ -1,8 +1,8 @@
-package cn.play.sysuser.service;
+package cn.demo.sysuser.service;
 
 import java.util.List;
 
-import cn.play.sysuser.domain.User;
+import cn.demo.sysuser.domain.User;
 
 public interface IUserService {
 	void save(User user);
