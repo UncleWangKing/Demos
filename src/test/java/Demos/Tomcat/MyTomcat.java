@@ -56,7 +56,6 @@ public class MyTomcat {
 
         //反射
         try{
-            System.out.println("clazz = " + clazz);
             if(null == clazz) return;
 
             Class<MyServlet> myServletClass = (Class<MyServlet>) Class.forName(clazz);

@@ -24,18 +24,20 @@ public class MyRequest {
         }
 
 //        HTTP请求协议
-//        GET /favicon.ico HTTP/1.1
-//        Accept: */*
-//        Accept-Encoding: gzip, deflate
-//        User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+//        GET /girl HTTP/1.1
 //        Host: localhost:8080
-//        Connetction: Keep-Alive
+//        Connection: keep-alive
+//        User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36
+//        Upgrade-Insecure-Requests: 1
+//        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+//        Accept-Encoding: gzip, deflate, br
+//        Accept-Language: zh-CN,zh;q=0.9
+//        Cookie: Idea-dcd385b9=46cc524a-4dc8-4890-bfe7-a7a69ccef2f2
         String httpHead = httpRequest.split("\n")[0];
         url = httpHead.split("\\s")[1];
         method = httpHead.split("\\s")[0];
 
-        System.out.println("请求:" + httpRequest);
-        System.out.println(this);
+        System.out.println(httpRequest);
     }
 
     @Override
