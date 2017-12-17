@@ -33,6 +33,16 @@ public class MyRequest {
         String httpHead = httpRequest.split("\n")[0];
         url = httpHead.split("\\s")[1];
         method = httpHead.split("\\s")[0];
+
+        System.out.println("请求:" + httpRequest);
         System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "MyRequest{" +
+                "url='" + url + '\'' +
+                ", method='" + method + '\'' +
+                '}';
     }
 }
