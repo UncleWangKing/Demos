@@ -1,4 +1,4 @@
-package cn.player.sysuser.test;
+package cn.demo.sysuser.test;
 
 import cn.demo.sysuser.controller.SysUserController;
 import cn.demo.sysuser.service.IUserService;
