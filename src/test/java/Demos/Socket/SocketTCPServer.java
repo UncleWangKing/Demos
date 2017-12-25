@@ -2,6 +2,7 @@ package Demos.Socket;
 
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -28,9 +29,10 @@ class SocketTCPServer extends Thread//让类继承为线程类
             bos.write("my name is liuwang!".getBytes());
    
             InputStream is=s.getInputStream();
-            byte [] buf =new byte[100];//别忘了加new  
-            int len=is.read(buf);  
-            System.out.println(new String(buf,0,len));  
+            byte [] buf =new byte[1024];//别忘了加new
+            int length = 0;
+            while((length = is.read(buf)) > 0)
+                System.out.println(new String(buf,0,length));
 //            1.7后写在try里的会被自动释放
 //            bos.close();
 //            is.close();

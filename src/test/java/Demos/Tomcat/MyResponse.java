@@ -11,7 +11,7 @@ public class MyResponse {
     }
 
     public void write(String content) throws IOException{
-//        HTTP相应协议
+//        HTTP响应协议
 //        HTTP/1.1 200 OK
 //        Content-Type: text/html
 

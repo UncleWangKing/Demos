@@ -6,9 +6,11 @@ public class Test {
         MyHandler myHandler = new MyHandler(man);
         Man proxyMan = (Man) MyProxy.newProxyInstance(
                 new MyClassLoader(
-                        "D:\\SoftBoot\\idea\\workspace\\Play\\src\\test\\java\\Demos\\Proxy"
+                        "D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\Demos\\Proxy"
                 ,"Demos.Proxy")
                 ,Man.class, myHandler);
+
+
         System.out.println(proxyMan.getClass().getName());
         proxyMan.findObj();
     }
