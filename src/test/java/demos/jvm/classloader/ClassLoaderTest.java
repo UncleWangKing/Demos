@@ -1,4 +1,4 @@
-package demos.jvm.classLoader;
+package demos.jvm.classloader;
 
 import java.util.List;
 
