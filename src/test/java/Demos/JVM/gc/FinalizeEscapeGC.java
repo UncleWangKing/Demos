@@ -1,4 +1,4 @@
-package Demos.JVM;
+package demos.jvm.gc;
 
 /**
  * 此代码演示了两点： 

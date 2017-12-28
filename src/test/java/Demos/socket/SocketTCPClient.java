@@ -1,4 +1,4 @@
-package Demos.Socket;
+package demos.socket;
 
 import java.io.InputStream;
 import java.io.OutputStream;

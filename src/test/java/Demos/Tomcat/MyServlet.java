@@ -1,4 +1,4 @@
-package Demos.Tomcat;
+package demos.tomcat;
 
 public abstract class MyServlet {
 

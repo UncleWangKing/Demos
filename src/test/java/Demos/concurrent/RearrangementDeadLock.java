@@ -1,11 +1,9 @@
 /**
  * 
  */
-package Demos.Concurrent;
+package demos.concurrent;
 
-/**
- * @author 张飞老师
- */
+
 public class RearrangementDeadLock {
 	// 共享变量
 	private boolean flag = false;

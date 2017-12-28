@@ -1,4 +1,4 @@
-package Demos.JVM.Reference;
+package demos.jvm.gc.reference;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;

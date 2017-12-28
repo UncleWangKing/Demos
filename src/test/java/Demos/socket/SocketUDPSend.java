@@ -1,4 +1,4 @@
-package Demos.Socket;
+package demos.socket;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

@@ -1,4 +1,4 @@
-package Demos.Proxy;
+package demos.proxy;
 
 public class LiuWang implements Man {
     @Override

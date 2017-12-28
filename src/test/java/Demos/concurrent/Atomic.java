@@ -1,4 +1,4 @@
-package Demos.Concurrent;
+package demos.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

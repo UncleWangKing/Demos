@@ -1,4 +1,4 @@
-package Demos.Proxy;
+package demos.proxy;
 
 public class Test {
     public static void main(String[] args) throws Throwable {
@@ -6,8 +6,8 @@ public class Test {
         MyHandler myHandler = new MyHandler(man);
         Man proxyMan = (Man) MyProxy.newProxyInstance(
                 new MyClassLoader(
-                        "D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\Demos\\Proxy"
-                ,"Demos.Proxy")
+                        "D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\proxy"
+                ,"demos.proxy")
                 ,Man.class, myHandler);
 
 

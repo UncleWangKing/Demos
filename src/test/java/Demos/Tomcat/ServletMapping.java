@@ -1,4 +1,4 @@
-package Demos.Tomcat;
+package demos.tomcat;
 
 public class ServletMapping {
     private String servletName;

@@ -1,7 +1,5 @@
-package Demos.Concurrent;
+package demos.concurrent;
 
-
-import java.util.HashMap;
 
 public class SimplePriorities extends Thread {
     private int countDown = 5;

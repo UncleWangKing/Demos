@@ -1,4 +1,4 @@
-package Demos.JVM.OOM;
+package demos.jvm.gc.oom;
 
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;

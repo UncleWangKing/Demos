@@ -1,4 +1,4 @@
-package Demos.Proxy;
+package demos.proxy;
 
 import java.lang.reflect.Method;
 

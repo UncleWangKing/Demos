@@ -1,9 +1,5 @@
-package Stuff;
+package stuff;
 
-
-import org.omg.CORBA.OBJECT_NOT_EXIST;
-
-import java.util.Arrays;
 
 /**
 * User Tester. 

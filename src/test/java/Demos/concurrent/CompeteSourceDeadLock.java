@@ -1,4 +1,4 @@
-package Demos.Concurrent;
+package demos.concurrent;
 
 
 //展示 两个线程 竞争 两份资源 情况下的死锁
