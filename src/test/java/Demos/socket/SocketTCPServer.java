@@ -24,8 +24,8 @@ class SocketTCPServer extends Thread//让类继承为线程类
         try  
         {//当然当不想直接发送数据，就会去创建一个带缓冲的流  
             OutputStream os=s.getOutputStream();
-            BufferedOutputStream bos = new BufferedOutputStream(os);
-            bos.write("my name is liuwang!".getBytes());
+//            BufferedOutputStream bos = new BufferedOutputStream(os);
+            os.write("my name is liuwang!".getBytes());
    
             InputStream is=s.getInputStream();
             byte [] buf =new byte[1024];//别忘了加new
@@ -34,7 +34,7 @@ class SocketTCPServer extends Thread//让类继承为线程类
                 System.out.println(new String(buf,0,length));
 //            1.7后写在try里的会被自动释放
 //            bos.close();
-//            is.close();
+            is.close();
             os.close();
         }
         catch(Exception e)  

@@ -1,6 +1,5 @@
 package demos.jvm.classloader;
 
-import org.springframework.util.FileCopyUtils;
 
 import java.io.*;
 

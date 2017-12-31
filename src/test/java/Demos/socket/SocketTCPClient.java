@@ -28,12 +28,13 @@ class SocketTCPClient
             os.write("Hello World!".getBytes());  
    
             InputStream is = s.getInputStream();
-            byte [] buf = new byte[100];  
-            int len = is.read(buf);  
-            System.out.println(new String(buf,0,len));
+            byte [] buf = new byte[100];
+            int length = 0;
+            while((length = is.read(buf)) > 0)
+                System.out.println(new String(buf,0,length));
 //            1.7后写在try里的会被自动释放
-//            os.close();
-//            is.close();
+            os.close();
+            is.close();
             s.close();  
    
         }  

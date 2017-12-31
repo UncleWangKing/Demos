@@ -1,13 +1,14 @@
 package stuff;
 
-
-
 public class StuffTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
 
-        Object o = new Object();
-        System.out.println(o);
+        System.out.println(StuffTest.class.getClassLoader());
+        System.out.println(String.class.getClassLoader());
 
+        System.out.println(StuffTest.class.getClassLoader()
+                +"->"+StuffTest.class.getClassLoader().getParent()
+                +"->"+StuffTest.class.getClassLoader().getParent().getParent());
     }
 }
