@@ -1,1 +1,0 @@
-package demos.proxy;import java.lang.reflect.Method;public class $MyProxy0 implements demos.proxy.Man{MyInvocationHandler h;public $MyProxy0(MyInvocationHandler h){this.h = h;}public void findObj()throws Throwable{Method method1 = demos.proxy.Man.class.getMethod("findObj",new Class[]{});this.h.invoke(this,method1,null);}}

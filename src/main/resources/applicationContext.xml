@@ -55,8 +55,10 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 同ssh的配置：加载映射文件 -->
 		<!-- 要求：1.必须使用前缀classpath*，2.必须使用通配符 -->
-		<property name="mapperLocations"
-				  value="classpath*:cn/demo/sysuser/mapper/*Mapper.xml" />
+		<!-- 当mybatis的xml文件和mapper接口不在相同包下时，需要用mapperLocations属性指定xml文件的路径。
+         *是个通配符，代表所有的文件，**代表所有目录下 -->
+		<!--<property name="mapperLocations"-->
+				  <!--value="classpath*:cn/demo/sysuser/mapper/*Mapper.xml" />-->
 		<!-- 同ssh的配置：加载mybatis其他配置信息 -->
 		<!-- 配置别名：直接给一个包添加别名 -->
 		<property name="typeAliasesPackage" value="cn.demo.sysuser.domain" />
