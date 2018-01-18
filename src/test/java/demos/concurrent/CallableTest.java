@@ -1,9 +1,6 @@
 package demos.concurrent;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 public class CallableTest {
       
@@ -42,5 +39,20 @@ public class CallableTest {
             e.printStackTrace();  
         }  
         System.out.println("主线程在执行完成");  
-    }  
+    }
+    private static class CallableDemo implements Callable<Integer> {
+
+        private int sum;
+        @Override
+        public Integer call() throws Exception {
+            System.out.println("Callable子线程开始计算啦！");
+            Thread.sleep(2000);
+
+            for(int i=0 ;i<5000;i++){
+                sum += i;
+            }
+            System.out.println("Callable子线程计算结束！");
+            return sum;
+        }
+    }
 }  
