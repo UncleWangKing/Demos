@@ -4,24 +4,26 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.LongAdder;
+
 //锁 CAS 热点分离的CAS(类似ConcurrentHashMap的多把锁) 三者效率比较
 //需1.8以上JDK方能打开看到完整3个
 public class Atomic {
-    private static final int MAX_THREADS = 3;                    //线程数
-    private static final int TASK_COUNT = 3;                        //任务数
+    private static final int MAX_THREADS = 10;                    //线程数
     private static final int TARGET_COUNT = 10000000;                //目标总数
-    static CountDownLatch cdlsync = new CountDownLatch(TASK_COUNT);
-    static CountDownLatch cdlatomic = new CountDownLatch(TASK_COUNT);
-    static CountDownLatch cdladdr = new CountDownLatch(TASK_COUNT);
+    static CountDownLatch cdlsync = new CountDownLatch(MAX_THREADS);
+    static CountDownLatch cdlatomic = new CountDownLatch(MAX_THREADS);
+    static CountDownLatch cdladdr = new CountDownLatch(MAX_THREADS);
+    static CountDownLatch startLatch;
     private AtomicLong acount = new AtomicLong(0L);            //无锁的原子操作
-//    private LongAdder lacount = new LongAdder();
+    private LongAdder lacount = new LongAdder();
     private long count = 0;
 
     public static void main(String args[]) throws InterruptedException {
         Atomic a = new Atomic();
         a.testSync();
         a.testAtomic();
-//        a.testAtomicLong();
+        a.testAtomicLong();
     }
 
     protected synchronized long inc() {                            //有锁的加法
@@ -40,9 +42,11 @@ public class Atomic {
         ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
         long starttime = System.currentTimeMillis();
         SyncThread sync = new SyncThread(this, starttime);
-        for (int i = 0; i < TASK_COUNT; i++) {
+        startLatch = new CountDownLatch(1);
+        for (int i = 0; i < MAX_THREADS; i++) {
             exe.submit(sync);                                //提交线程开始计算
         }
+        startLatch.countDown();
         cdlsync.await();
         exe.shutdown();
     }
@@ -51,23 +55,27 @@ public class Atomic {
         ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
         long starttime = System.currentTimeMillis();
         AtomicThread atomic = new AtomicThread(starttime);
-        for (int i = 0; i < TASK_COUNT; i++) {
+        startLatch = new CountDownLatch(1);
+        for (int i = 0; i < MAX_THREADS; i++) {
             exe.submit(atomic);                                //提交线程开始计算
         }
+        startLatch.countDown();
         cdlatomic.await();
         exe.shutdown();
     }
 
-//    public void testAtomicLong() throws InterruptedException {
-//        ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
-//        long starttime = System.currentTimeMillis();
-//        LongAddrThread atomic = new LongAddrThread(starttime);
-//        for (int i = 0; i < TASK_COUNT; i++) {
-//            exe.submit(atomic);                                //提交线程开始计算
-//        }
-//        cdladdr.await();
-//        exe.shutdown();
-//    }
+    public void testAtomicLong() throws InterruptedException {
+        ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
+        long starttime = System.currentTimeMillis();
+        LongAddrThread atomic = new LongAddrThread(starttime);
+        startLatch = new CountDownLatch(1);
+        for (int i = 0; i < MAX_THREADS; i++) {
+            exe.submit(atomic);                                //提交线程开始计算
+        }
+        startLatch.countDown();
+        cdladdr.await();
+        exe.shutdown();
+    }
 
     public class SyncThread implements Runnable {
         protected String name;
@@ -81,12 +89,16 @@ public class Atomic {
 
         @Override
         public void run() {
-            long v = out.getCount();
-            while (v < TARGET_COUNT) {                        //在到达目标值前，不停循环
-                v = out.inc();
+            try {
+                startLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < TARGET_COUNT; i++) {
+                out.inc();
             }
             long endtime = System.currentTimeMillis();
-            System.out.println("SyncThread spend:" + (endtime - starttime) + "ms" + " v=" + v);
+            System.out.println("SyncThread spend:" + (endtime - starttime) + "ms" + " value=" + out.getCount());
             cdlsync.countDown();
         }
     }
@@ -100,35 +112,42 @@ public class Atomic {
         }
 
         @Override
-        public void run() {                                    //在到达目标值前，不停循环
-            long v = acount.get();
-            while (v < TARGET_COUNT) {
-                v = acount.incrementAndGet();                    //无锁的加法
+        public void run() {
+            try {
+                startLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < TARGET_COUNT; i++) {
+                acount.incrementAndGet();
             }
             long endtime = System.currentTimeMillis();
-            System.out.println("AtomicThread spend:" + (endtime - starttime) + "ms" + " v=" + v);
+            System.out.println("AtomicThread spend:" + (endtime - starttime) + "ms" + " value=" + acount.get());
             cdlatomic.countDown();
         }
     }
 
-//    public class LongAddrThread implements Runnable {
-//        protected String name;
-//        protected long starttime;
-//
-//        public LongAddrThread(long starttime) {
-//            this.starttime = starttime;
-//        }
-//
-//        @Override
-//        public void run() {
-//            long v = lacount.sum();
-//            while (v < TARGET_COUNT) {
-//                lacount.increment();
-//                v = lacount.sum();
-//            }
-//            long endtime = System.currentTimeMillis();
-//            System.out.println("LongAdder spend:" + (endtime - starttime) + "ms" + " v=" + v);
-//            cdladdr.countDown();
-//        }
-//    }
+    public class LongAddrThread implements Runnable {
+        protected String name;
+        protected long starttime;
+
+        public LongAddrThread(long starttime) {
+            this.starttime = starttime;
+        }
+
+        @Override
+        public void run() {
+            try {
+                startLatch.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < TARGET_COUNT; i++) {
+                lacount.increment();
+            }
+            long endtime = System.currentTimeMillis();
+            System.out.println("LongAdder spend:" + (endtime - starttime) + "ms" + " value=" + lacount.sum());
+            cdladdr.countDown();
+        }
+    }
 }

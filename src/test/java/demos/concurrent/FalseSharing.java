@@ -1,12 +1,16 @@
 package demos.concurrent;
 
+import sun.misc.Contended;
+
+import java.util.Random;
+
 public final class FalseSharing
     implements Runnable
 {
     public final static int NUM_THREADS = 4; // change
     public final static long ITERATIONS = 100L * 1000L * 1000L;
     private final int arrayIndex;
- 
+
     private static VolatileLong[] longs = new VolatileLong[NUM_THREADS];
     static
     {
@@ -24,7 +28,9 @@ public final class FalseSharing
     public static void main(final String[] args) throws Exception
     {
         final long start = System.nanoTime();
+
         runTest();
+
         System.out.println("duration = " + (System.nanoTime() - start));
     }
  
@@ -36,7 +42,7 @@ public final class FalseSharing
         {
             threads[i] = new Thread(new FalseSharing(i));
         }
- 
+
         for (Thread t : threads)
         {
             t.start();
@@ -56,13 +62,13 @@ public final class FalseSharing
             longs[arrayIndex].value = i;
         }
     }
- 
+
     public final static class VolatileLong
     {
-        //jdk 1.8
-//        @Contended("group")
-        public long p0, p1, p2, p3, p4, p5; // comment out
+//        public long p0, p1, p2, p3, p4, p5; // comment out
+//         -XX:-RestrictContended
+//        @Contended
         public volatile long value = 0L;
-        public long q0, q1, q2, q3, q4, q5; // comment out
+//        public long q0, q1, q2, q3, q4, q5; // comment out
     }
 }
