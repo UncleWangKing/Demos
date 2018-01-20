@@ -6,8 +6,10 @@ public class SynchronizedTest {
         System.out.println("Method 1 start");
         try {
             synchronized (SynchronizedTest.class){
-                Thread.sleep(3000);
-                System.out.println("Method 1 execute");
+                for (int i = 0; i < 3; i++) {
+                    Thread.sleep(1000);
+                    System.out.println("Method 1 execute");
+                }
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -19,8 +21,10 @@ public class SynchronizedTest {
         System.out.println("Method 2 start");
         try {
             synchronized (SynchronizedTest.class) {
-                Thread.sleep(3000);
-                System.out.println("Method 2 execute");
+                for (int i = 0; i < 3; i++) {
+                    Thread.sleep(1000);
+                    System.out.println("Method 2 execute");
+                }
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
