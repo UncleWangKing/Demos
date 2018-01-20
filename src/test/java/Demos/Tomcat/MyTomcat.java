@@ -1,4 +1,4 @@
-package demos.tomcat;
+package demo.tomcat;
 
 import java.io.InputStream;
 import java.io.OutputStream;

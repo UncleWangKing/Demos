@@ -1,4 +1,4 @@
-package demos.jvm.classloader;
+package demo.jvm.classloader;
 
 public class ClassloaderHelloWorld {
 

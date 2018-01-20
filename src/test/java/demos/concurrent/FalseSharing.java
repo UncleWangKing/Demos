@@ -1,8 +1,4 @@
-package demos.concurrent;
-
-import sun.misc.Contended;
-
-import java.util.Random;
+package demo.concurrent;
 
 public final class FalseSharing
     implements Runnable

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package demos.concurrent;
+package demo.concurrent;
 
 
 public class RearrangementDeadLock {

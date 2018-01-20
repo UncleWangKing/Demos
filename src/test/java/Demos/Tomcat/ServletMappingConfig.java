@@ -1,4 +1,4 @@
-package demos.tomcat;
+package demo.tomcat;
 
 import java.util.ArrayList;
 import java.util.List;

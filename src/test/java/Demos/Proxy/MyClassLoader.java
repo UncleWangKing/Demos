@@ -1,4 +1,4 @@
-package demos.proxy;
+package demo.proxy;
 
 import org.springframework.util.FileCopyUtils;
 

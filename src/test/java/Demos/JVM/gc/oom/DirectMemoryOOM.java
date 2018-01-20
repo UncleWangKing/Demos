@@ -1,4 +1,4 @@
-package demos.jvm.gc.oom;
+package demo.jvm.gc.oom;
 
 import sun.misc.Unsafe;
 

@@ -1,4 +1,4 @@
-package demos.jvm.gc.oom;
+package demo.jvm.gc.oom;
 
 import java.util.ArrayList;
 import java.util.List;

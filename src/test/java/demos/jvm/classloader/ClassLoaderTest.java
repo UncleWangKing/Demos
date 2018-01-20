@@ -1,4 +1,4 @@
-package demos.jvm.classloader;
+package demo.jvm.classloader;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ClassLoaderTest {
         System.out.println("--------------------------------------------------");
 
         try {
-            Class classDateApp = new MyClassLoader("D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\jvm\\classloader\\classfile").loadClass("demos.jvm.classloader.ClassLoaderAttachment");
+            Class classDateApp = new MyClassLoader("D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\jvm\\classloader\\classfile").loadClass("demo.jvm.classloader.ClassLoaderAttachment");
             Class classDateMy = new MyClassLoader("D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\jvm\\classloader\\classfile").loadClass("ClassLoaderAttachment");
             Date dateApp = (Date) classDateApp.newInstance();
             Date dateMy = (Date) classDateMy.newInstance();
@@ -32,9 +32,9 @@ public class ClassLoaderTest {
             System.out.println("dateMy ClassLoader:"+dateMy.getClass().getClassLoader().getClass().getName());
             System.out.println("dateMy:"+dateMy);
             System.out.println("dateApp instanceof  ClassLoaderAttachment:" + (dateApp instanceof  ClassLoaderAttachment));
-            System.out.println("dateApp instanceof  demos.jvm.classloader.ClassLoaderAttachment:" + (dateApp instanceof  demos.jvm.classloader.ClassLoaderAttachment));
+            System.out.println("dateApp instanceof  demos.jvm.classloader.ClassLoaderAttachment:" + (dateApp instanceof  demo.jvm.classloader.ClassLoaderAttachment));
             System.out.println("dateMy instanceof  ClassLoaderAttachment:" + (dateMy instanceof  ClassLoaderAttachment));
-            System.out.println("dateMy instanceof  demos.jvm.classloader.ClassLoaderAttachment:" + (dateMy instanceof  demos.jvm.classloader.ClassLoaderAttachment));
+            System.out.println("dateMy instanceof  demos.jvm.classloader.ClassLoaderAttachment:" + (dateMy instanceof  demo.jvm.classloader.ClassLoaderAttachment));
         } catch (Exception e1) {
             e1.printStackTrace();
         }

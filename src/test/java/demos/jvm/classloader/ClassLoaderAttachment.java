@@ -1,4 +1,4 @@
-package demos.jvm.classloader;
+package demo.jvm.classloader;
 
 import java.util.Date;
 

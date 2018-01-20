@@ -1,4 +1,4 @@
-package demos.jvm.classloader;
+package demo.jvm.classloader;
 
 
 import java.io.*;
@@ -42,7 +42,7 @@ public class SimpleClassLoader extends ClassLoader{
 
     //测试，先将ClassLoaderAttachment.class文件加密写到工程的class_temp目录下  
     public static void main(String[] args) throws Exception{
-        Class clazz = new SimpleClassLoader("D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\jvm\\classloader\\classfile").loadClass("demos.jvm.classloader.ClassLoaderAttachment");
+        Class clazz = new SimpleClassLoader("D:\\SoftBoot\\idea\\workspace\\Demos\\src\\test\\java\\demos\\jvm\\classloader\\classfile").loadClass("demo.jvm.classloader.ClassLoaderAttachment");
         //0xCOFFBABE
 //        System.out.println("clazz:"+clazz);
 //        System.out.println("clazz classLoader:"+clazz.getClassLoader());

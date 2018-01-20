@@ -1,4 +1,4 @@
-package demos.jvm.spi;
+package demo.jvm.spi;
 
 import java.util.List;
 

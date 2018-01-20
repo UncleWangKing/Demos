@@ -1,4 +1,4 @@
-package demos.concurrent;
+package demo.concurrent;
 
 //虽然线程1和线程2都进入了对应的方法开始执行，但是线程2在进入同步块之前，需要等待线程1中同步块执行完成。
 public class SynchronizedTest {

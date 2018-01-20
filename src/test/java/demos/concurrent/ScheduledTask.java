@@ -1,4 +1,4 @@
-package demos.concurrent;
+package demo.concurrent;
 
 import java.util.Date;
 import java.util.concurrent.ScheduledThreadPoolExecutor;

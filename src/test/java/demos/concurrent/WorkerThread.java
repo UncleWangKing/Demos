@@ -1,4 +1,4 @@
-package demos.concurrent;
+package demo.concurrent;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

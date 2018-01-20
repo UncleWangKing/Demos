@@ -1,4 +1,4 @@
-package demos.concurrent;
+package demo.concurrent;
 
 /**
  * 展示可见性导致的死锁

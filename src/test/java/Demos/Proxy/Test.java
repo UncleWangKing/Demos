@@ -1,4 +1,4 @@
-package demos.proxy;
+package demo.proxy;
 
 public class Test {
     public static void main(String[] args) throws Throwable {

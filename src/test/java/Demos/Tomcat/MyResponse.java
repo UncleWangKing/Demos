@@ -1,4 +1,4 @@
-package demos.tomcat;
+package demo.tomcat;
 
 import java.io.IOException;
 import java.io.OutputStream;
