@@ -9,12 +9,11 @@ import java.util.concurrent.atomic.LongAdder;
 //锁 CAS 热点分离的CAS(类似ConcurrentHashMap的多把锁) 三者效率比较
 //需1.8以上JDK方能打开看到完整3个
 public class Atomic {
-    private static final int MAX_THREADS = 10;                    //线程数
+    private static final int MAX_THREADS = 5;                    //线程数
     private static final int TARGET_COUNT = 10000000;                //目标总数
     static CountDownLatch cdlsync = new CountDownLatch(MAX_THREADS);
     static CountDownLatch cdlatomic = new CountDownLatch(MAX_THREADS);
     static CountDownLatch cdladdr = new CountDownLatch(MAX_THREADS);
-    static CountDownLatch startLatch;
     private AtomicLong acount = new AtomicLong(0L);            //无锁的原子操作
     private LongAdder lacount = new LongAdder();
     private long count = 0;
@@ -42,11 +41,9 @@ public class Atomic {
         ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
         long starttime = System.currentTimeMillis();
         SyncThread sync = new SyncThread(this, starttime);
-        startLatch = new CountDownLatch(1);
         for (int i = 0; i < MAX_THREADS; i++) {
             exe.submit(sync);                                //提交线程开始计算
         }
-        startLatch.countDown();
         cdlsync.await();
         exe.shutdown();
     }
@@ -55,11 +52,9 @@ public class Atomic {
         ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
         long starttime = System.currentTimeMillis();
         AtomicThread atomic = new AtomicThread(starttime);
-        startLatch = new CountDownLatch(1);
         for (int i = 0; i < MAX_THREADS; i++) {
             exe.submit(atomic);                                //提交线程开始计算
         }
-        startLatch.countDown();
         cdlatomic.await();
         exe.shutdown();
     }
@@ -68,11 +63,9 @@ public class Atomic {
         ExecutorService exe = Executors.newFixedThreadPool(MAX_THREADS);
         long starttime = System.currentTimeMillis();
         LongAddrThread atomic = new LongAddrThread(starttime);
-        startLatch = new CountDownLatch(1);
         for (int i = 0; i < MAX_THREADS; i++) {
             exe.submit(atomic);                                //提交线程开始计算
         }
-        startLatch.countDown();
         cdladdr.await();
         exe.shutdown();
     }
@@ -89,11 +82,6 @@ public class Atomic {
 
         @Override
         public void run() {
-            try {
-                startLatch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             for (int i = 0; i < TARGET_COUNT; i++) {
                 out.inc();
             }
@@ -113,11 +101,6 @@ public class Atomic {
 
         @Override
         public void run() {
-            try {
-                startLatch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             for (int i = 0; i < TARGET_COUNT; i++) {
                 acount.incrementAndGet();
             }
@@ -137,11 +120,6 @@ public class Atomic {
 
         @Override
         public void run() {
-            try {
-                startLatch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             for (int i = 0; i < TARGET_COUNT; i++) {
                 lacount.increment();
             }
