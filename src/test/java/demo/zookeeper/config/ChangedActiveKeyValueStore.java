@@ -34,6 +34,7 @@ public class ChangedActiveKeyValueStore extends ConnectionWatcher {
                 //sleep then retry
                 TimeUnit.SECONDS.sleep(RETRY_PERIOD_SECONDS);
             }
+            return;
         }
     }
     public String read(String path,Watcher watch) throws KeeperException, InterruptedException{
