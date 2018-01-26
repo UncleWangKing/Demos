@@ -20,7 +20,7 @@ public class CreateGroup implements Watcher {
     
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         CreateGroup createGroup = new CreateGroup();
-        createGroup.connect(Config.ipWithPort);
+        createGroup.connect(Config.IP_WITH_PORT);
         createGroup.create("zoo");
         createGroup.close();
     }

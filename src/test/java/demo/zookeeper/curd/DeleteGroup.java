@@ -24,7 +24,7 @@ public class DeleteGroup extends ConnectionWatcher {
     }
     public static void main(String[] args) throws InterruptedException, IOException, KeeperException {
         DeleteGroup deleteGroup = new DeleteGroup();
-        deleteGroup.connect(Config.ipWithPort);
+        deleteGroup.connect(Config.IP_WITH_PORT);
         deleteGroup.delete("zoo");
         deleteGroup.close();
     }

@@ -10,7 +10,7 @@ public class ZkTest {
                 public void run() {
                     DistributedLock lock = null;
                     try {
-                        lock = new DistributedLock(Config.ipWithPort,"test2");
+                        lock = new DistributedLock(Config.IP_WITH_PORT,"test2");
                         lock.lock();
                         System.out.println("Thread " + Thread.currentThread().getId() + " running");
                         Thread.sleep(3000);

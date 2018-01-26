@@ -26,7 +26,7 @@ public class ListGroup extends ConnectionWatcher {
     }
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         ListGroup listGroup = new ListGroup();
-        listGroup.connect(Config.ipWithPort);
+        listGroup.connect(Config.IP_WITH_PORT);
         listGroup.list("zoo");
         listGroup.close();
     }

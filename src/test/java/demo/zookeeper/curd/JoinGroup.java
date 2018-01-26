@@ -16,7 +16,7 @@ public class JoinGroup extends ConnectionWatcher {
     }
     public static void main(String[] args) throws InterruptedException, IOException, KeeperException {
         JoinGroup joinGroup = new JoinGroup();
-        joinGroup.connect(Config.ipWithPort);
+        joinGroup.connect(Config.IP_WITH_PORT);
         joinGroup.join("zoo", "miao");
         
         //stay alive until process is killed or thread is interrupted

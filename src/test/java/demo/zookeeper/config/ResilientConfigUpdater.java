@@ -29,7 +29,7 @@ public class ResilientConfigUpdater extends ConnectionWatcher {
     public static void main(String[] args) throws Exception {
         while(true){
             try {
-                ResilientConfigUpdater configUpdater = new ResilientConfigUpdater(Config.ipWithPort);
+                ResilientConfigUpdater configUpdater = new ResilientConfigUpdater(Config.IP_WITH_PORT);
                 configUpdater.run();
             }catch (KeeperException.SessionExpiredException e) {
                 // start a new session

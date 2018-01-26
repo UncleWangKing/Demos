@@ -27,7 +27,7 @@ public class ConfigUpdater {
         }
     }
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        ConfigUpdater configUpdater = new ConfigUpdater(Config.ipWithPort);
+        ConfigUpdater configUpdater = new ConfigUpdater(Config.IP_WITH_PORT);
         configUpdater.run();
     }
 }

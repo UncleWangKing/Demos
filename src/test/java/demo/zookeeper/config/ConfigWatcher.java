@@ -33,7 +33,7 @@ public class ConfigWatcher implements Watcher {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        ConfigWatcher configWatcher = new ConfigWatcher(Config.ipWithPort);
+        ConfigWatcher configWatcher = new ConfigWatcher(Config.IP_WITH_PORT);
         configWatcher.dispalyConfig();
         //stay alive until process is killed or Thread is interrupted
         Thread.sleep(Long.MAX_VALUE);
