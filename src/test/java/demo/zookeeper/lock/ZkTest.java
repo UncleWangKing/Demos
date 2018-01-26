@@ -11,7 +11,7 @@ public class ZkTest {
                         lock = new DistributedLock("172.168.70.113:2183","test2");
                         lock.lock();
                         System.out.println("Thread " + Thread.currentThread().getId() + " running");
-//                        Thread.sleep(3000);
+                        Thread.sleep(3000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
