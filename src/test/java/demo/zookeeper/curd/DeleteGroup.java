@@ -1,5 +1,6 @@
 package demo.zookeeper.curd;
 
+import demo.common.Config;
 import demo.zookeeper.common.ConnectionWatcher;
 import org.apache.zookeeper.KeeperException;
 
@@ -23,7 +24,7 @@ public class DeleteGroup extends ConnectionWatcher {
     }
     public static void main(String[] args) throws InterruptedException, IOException, KeeperException {
         DeleteGroup deleteGroup = new DeleteGroup();
-        deleteGroup.connect("172.168.70.113:2181");
+        deleteGroup.connect(Config.ipWithPort);
         deleteGroup.delete("zoo");
         deleteGroup.close();
     }

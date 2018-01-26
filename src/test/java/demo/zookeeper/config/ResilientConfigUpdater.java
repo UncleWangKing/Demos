@@ -1,5 +1,6 @@
 package demo.zookeeper.config;
 
+import demo.common.Config;
 import demo.zookeeper.common.ConnectionWatcher;
 import org.apache.zookeeper.KeeperException;
 
@@ -28,7 +29,7 @@ public class ResilientConfigUpdater extends ConnectionWatcher {
     public static void main(String[] args) throws Exception {
         while(true){
             try {
-                ResilientConfigUpdater configUpdater = new ResilientConfigUpdater("172.168.70.113:2181");
+                ResilientConfigUpdater configUpdater = new ResilientConfigUpdater(Config.ipWithPort);
                 configUpdater.run();
             }catch (KeeperException.SessionExpiredException e) {
                 // start a new session

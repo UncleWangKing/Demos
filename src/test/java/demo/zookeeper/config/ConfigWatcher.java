@@ -1,5 +1,6 @@
 package demo.zookeeper.config;
 
+import demo.common.Config;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -32,7 +33,7 @@ public class ConfigWatcher implements Watcher {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        ConfigWatcher configWatcher = new ConfigWatcher("172.168.70.113:2181");
+        ConfigWatcher configWatcher = new ConfigWatcher(Config.ipWithPort);
         configWatcher.dispalyConfig();
         //stay alive until process is killed or Thread is interrupted
         Thread.sleep(Long.MAX_VALUE);

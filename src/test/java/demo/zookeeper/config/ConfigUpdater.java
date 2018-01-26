@@ -1,5 +1,6 @@
 package demo.zookeeper.config;
 
+import demo.common.Config;
 import org.apache.zookeeper.KeeperException;
 
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class ConfigUpdater {
         }
     }
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        ConfigUpdater configUpdater = new ConfigUpdater("172.168.70.113:2181");
+        ConfigUpdater configUpdater = new ConfigUpdater(Config.ipWithPort);
         configUpdater.run();
     }
 }

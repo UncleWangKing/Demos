@@ -1,5 +1,6 @@
 package demo.zookeeper.curd;
 
+import demo.common.Config;
 import demo.zookeeper.common.ConnectionWatcher;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -15,7 +16,7 @@ public class JoinGroup extends ConnectionWatcher {
     }
     public static void main(String[] args) throws InterruptedException, IOException, KeeperException {
         JoinGroup joinGroup = new JoinGroup();
-        joinGroup.connect("172.168.70.113:2181");
+        joinGroup.connect(Config.ipWithPort);
         joinGroup.join("zoo", "miao");
         
         //stay alive until process is killed or thread is interrupted

@@ -1,5 +1,7 @@
 package demo.zookeeper.lock;
 
+import demo.common.Config;
+
 public class ZkTest {
     public static void main(String[] args) {
         ConcurrentTest.ConcurrentTask[] tasks = new ConcurrentTest.ConcurrentTask[3];
@@ -8,7 +10,7 @@ public class ZkTest {
                 public void run() {
                     DistributedLock lock = null;
                     try {
-                        lock = new DistributedLock("172.168.70.113:2183","test2");
+                        lock = new DistributedLock(Config.ipWithPort,"test2");
                         lock.lock();
                         System.out.println("Thread " + Thread.currentThread().getId() + " running");
                         Thread.sleep(3000);

@@ -1,5 +1,6 @@
 package demo.zookeeper.curd;
 
+import demo.common.Config;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class CreateGroup implements Watcher {
     
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         CreateGroup createGroup = new CreateGroup();
-        createGroup.connect("172.168.70.113:2181");
+        createGroup.connect(Config.ipWithPort);
         createGroup.create("zoo");
         createGroup.close();
     }
