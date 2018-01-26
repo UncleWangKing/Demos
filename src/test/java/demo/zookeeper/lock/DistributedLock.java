@@ -12,22 +12,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-/**
- DistributedLock lock = null;
- try {
- lock = new DistributedLock("127.0.0.1:2182","test");
- lock.lock();
- //do something...
- } catch (Exception e) {
- e.printStackTrace();
- }
- finally {
- if(lock != null)
- lock.unlock();
- }
- * @author xueliang
- *
- */
 public class DistributedLock implements Lock, Watcher {
     private ZooKeeper zk;
     private String root = "/locks";//根
@@ -77,7 +61,7 @@ public class DistributedLock implements Lock, Watcher {
         }
         try {
             if(this.tryLock()){
-                System.out.println("Thread " + Thread.currentThread().getId() + " " +myZnode + " get lock true");
+                System.out.println("Thread " + Thread.currentThread().getId() + " " +myZnode + " get first lock");
                 return;
             }
             else{
@@ -109,7 +93,7 @@ public class DistributedLock implements Lock, Watcher {
                 }
             }
             Collections.sort(lockObjNodes);
-            System.out.println(myZnode + "==" + lockObjNodes.get(0));
+//            System.out.println(myZnode + "==" + lockObjNodes.get(0));
             if(myZnode.equals(root+"/"+lockObjNodes.get(0))){
                 //如果是最小的节点,则表示取得锁
                 return true;
@@ -153,7 +137,6 @@ public class DistributedLock implements Lock, Watcher {
         try {
             System.out.println("unlock " + myZnode);
             zk.delete(myZnode,-1);
-            myZnode = null;
             zk.close();
         } catch (InterruptedException e) {
             e.printStackTrace();

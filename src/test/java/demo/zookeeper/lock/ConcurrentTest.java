@@ -7,19 +7,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
-  ConcurrentTask[] task = new ConcurrentTask[5];
-  for(int i=0;i<task.length;i++){
-       task[i] = new ConcurrentTask(){
-            public void run() {
-                System.out.println("==============");
-                 
-            }};
-  }
-  new ConcurrentTest(task);
- * @author xueliang
- *
- */
 public class ConcurrentTest {
     private CountDownLatch startSignal = new CountDownLatch(1);//开始阀门
     private CountDownLatch doneSignal = null;//结束阀门

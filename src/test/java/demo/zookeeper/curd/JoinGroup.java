@@ -16,7 +16,7 @@ public class JoinGroup extends ConnectionWatcher {
     public static void main(String[] args) throws InterruptedException, IOException, KeeperException {
         JoinGroup joinGroup = new JoinGroup();
         joinGroup.connect("172.168.70.113:2181");
-        joinGroup.join("zoo", "duck");
+        joinGroup.join("zoo", "miao");
         
         //stay alive until process is killed or thread is interrupted
         Thread.sleep(Long.MAX_VALUE);
