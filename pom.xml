@@ -137,6 +137,11 @@
 			  <artifactId>disruptor</artifactId>
 			  <version>3.3.7</version>
 		  </dependency>
+		  <dependency>
+			  <groupId>org.apache.zookeeper</groupId>
+			  <artifactId>zookeeper</artifactId>
+			  <version>3.4.6</version>
+		  </dependency>
 	  <!-- jackson end -->
   </dependencies>
   <build>
