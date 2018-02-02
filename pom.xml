@@ -8,6 +8,8 @@
 	<modules>
 		<module>RpcService</module>
 		<module>RpcClient</module>
+        <module>DubboService</module>
+		<module>DubboClient</module>
 	</modules>
 	<name>demos Maven Webapp</name>
   <url>http://maven.apache.org</url>
