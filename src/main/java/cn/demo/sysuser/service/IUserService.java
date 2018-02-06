@@ -7,6 +7,8 @@ import cn.demo.sysuser.domain.User;
 public interface IUserService {
 	void save(User user);
 
+	void saveTest(User user);
+
 	User get(Long id);
 	
 	List<User> getAll();
