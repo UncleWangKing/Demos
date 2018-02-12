@@ -7,4 +7,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAll" resultType="MysqlBean">
 		select id,username,password,uuid from mysql_test
 	</select>
+
+	<insert id="batchInsert">
+		insert into mysql_test
+		(
+		username
+		,password
+		,uuid
+		)
+		values
+		<foreach collection ="list" item="item" separator =",">
+			(
+			#{item.username},
+			#{item.password},
+			#{item.uuid}
+			)
+		</foreach>
+	</insert>
 </mapper>
