@@ -72,6 +72,8 @@
 
 	<!-- 一劳永逸配置映射器接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.demo.sysuser.mapper" />
+		<property name="basePackage" value="
+					cn.demo.sysuser.mapper
+					,cn.demo.mysql.mapper" />
 	</bean>
 </beans>

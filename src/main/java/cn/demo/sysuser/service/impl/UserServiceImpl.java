@@ -32,14 +32,15 @@ public class UserServiceImpl implements IUserService {
 	public void save(User user) {
 		userMapper.save(user);
 		try {
+			//如果此处直接用this.saveTest(user); 将没有事务 因为使用的不是代理 事务由代理完成
 			proxy.saveTest(user);
 		}catch (RuntimeException e){
 			System.out.println(e.getMessage());
 		}
 	}
 
-//	@Transactional(propagation= Propagation.REQUIRED)//将会父子一起回滚  因为是一个事务
-	@Transactional(propagation= Propagation.REQUIRES_NEW)//子会回滚 父不会 因为是两个事务
+//	@Transactional(propagation = Propagation.REQUIRED)//将会父子一起回滚  因为是一个事务
+	@Transactional(propagation = Propagation.REQUIRES_NEW)//子会回滚 父不会 因为是两个事务
 	public void saveTest(User user) {
 		user.setUsername("事务2");
 		user.setPassword("还是事务2");

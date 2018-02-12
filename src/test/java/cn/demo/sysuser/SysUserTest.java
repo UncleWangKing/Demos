@@ -1,4 +1,4 @@
-package cn.demo.sysuser.test;
+package cn.demo.sysuser;
 
 import cn.demo.sysuser.controller.SysUserController;
 import cn.demo.sysuser.domain.User;
