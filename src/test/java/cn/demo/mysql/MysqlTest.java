@@ -1,5 +1,6 @@
 package cn.demo.mysql;
 
+import cn.demo.mysql.domain.MysqlBean;
 import cn.demo.mysql.mapper.MysqlMapper;
 import cn.demo.sysuser.domain.User;
 import cn.demo.sysuser.mapper.UserMapper;
@@ -20,8 +21,8 @@ public class MysqlTest extends TestCase {
 
 	@Test
 	public void testList() throws Exception {
-		List<User> list = mysqlMapper.getAll();
-		for (User user:list) {
+		List<MysqlBean> list = mysqlMapper.getAll();
+		for (MysqlBean user:list) {
 			System.out.println(user);
 		}
 	}

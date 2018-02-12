@@ -59,7 +59,9 @@
 				  value="classpath*:cn/demo/sysuser/mapper/*Mapper.xml" />
 		<!-- 同ssh的配置：加载mybatis其他配置信息 -->
 		<!-- 配置别名：直接给一个包添加别名 -->
-		<property name="typeAliasesPackage" value="cn.demo.sysuser.domain" />
+		<property name="typeAliasesPackage" value="
+				cn.demo.sysuser.domain
+				,cn.demo.mysql.domain" />
 	</bean>
 
 	<bean id="transactionManager"
