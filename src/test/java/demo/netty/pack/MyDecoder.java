@@ -10,9 +10,13 @@ public class MyDecoder extends FrameDecoder{
 	private static final int HEAD_FLAG = -32323231;
 	// 数据包基本长度
 	private final static int BASE_LENGTH = 4 + 4;
+
+	private static int accept_count = 0;
+
+	private static int recev_count = 0;
 	@Override
 	protected Object decode(ChannelHandlerContext ctx, Channel channel, ChannelBuffer buffer) throws Exception {
-		
+		System.out.println("accept_count" + ++accept_count);
 		// 收到数据之后，先判断buffer中可读的数据长度是否大于数据包的基本长度
 		if(buffer.readableBytes() > BASE_LENGTH){
 			// 防止socket攻击：
@@ -69,6 +73,7 @@ public class MyDecoder extends FrameDecoder{
 			// 继续传递下去
 			// ?
 			// 如果此时buffer中的数据还没有读完，那么剩下的数据怎么办？
+			System.out.println("recev_count" + ++recev_count);
 			return new String(dst);
 			
 		}
