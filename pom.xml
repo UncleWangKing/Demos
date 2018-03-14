@@ -145,6 +145,23 @@
 			  <version>3.4.6</version>
 		  </dependency>
 	  <!-- jackson end -->
+	  <!-- netty start -->
+		  <!--<dependency>-->
+			  <!--<groupId>io.netty</groupId>-->
+			  <!--<artifactId>netty</artifactId>-->
+			  <!--<version>3.10.5.Final</version>-->
+		  <!--</dependency>-->
+		  <dependency>
+			  <groupId>io.netty</groupId>
+			  <artifactId>netty-all</artifactId>
+			  <version>4.1.19.Final</version>
+		  </dependency>
+		  <!--<dependency>-->
+			  <!--<groupId>org.jboss.netty</groupId>-->
+			  <!--<artifactId>netty</artifactId>-->
+			  <!--<version>RELEASE</version>-->
+		  <!--</dependency>-->
+      <!-- netty end -->
   </dependencies>
   <build>
     <finalName>demos</finalName>
