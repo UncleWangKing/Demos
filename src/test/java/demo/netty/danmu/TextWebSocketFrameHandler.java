@@ -26,7 +26,7 @@ public class TextWebSocketFrameHandler extends
             if (channel != incoming){
 				channel.writeAndFlush(new TextWebSocketFrame(msg.text()));
 			} else {
-				channel.writeAndFlush(new TextWebSocketFrame("我发送的"+msg.text() ));
+				channel.writeAndFlush(new TextWebSocketFrame("("+msg.text()+")" ));
 			}
         }
 	}
