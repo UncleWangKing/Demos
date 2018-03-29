@@ -11,11 +11,9 @@ public class MaximumSubsequenceSum {
         int maxResult = Integer.MIN_VALUE;
         for (int i = 0; i < num.length; i++) {
             result += num[i];
-            // 相加之后大于结果值，注意需要考虑全是负数的情况
-            if (result > maxResult) {
-                // 比较是否大于最大值maxResult
-                maxResult = result;
-            }else if (result < 0) // 否则如果相加的结果小于0，并且小于maxResult，这个子串的最大值就确定下来了
+            if (result > maxResult) // 相加之后大于结果值，注意需要考虑全是负数的情况
+                maxResult = result;// 比较是否大于最大值maxResult
+            else if (result < 0) // 否则如果相加的结果小于0，并且小于maxResult，这个子串的最大值就确定下来了
                     result = 0;//重置
         }
         return maxResult;
