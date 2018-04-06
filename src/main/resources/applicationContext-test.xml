@@ -76,6 +76,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="
 					cn.demo.sysuser.mapper
-					,cn.demo.mysql.mapper" />
+					,cn.demo.mysql.mapper
+					,cn.generator.mapper" />
 	</bean>
 </beans>
