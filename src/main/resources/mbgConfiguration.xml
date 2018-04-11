@@ -12,20 +12,20 @@
 
         <!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
         <commentGenerator>
-            <property name="suppressAllComments" value="false" />
-            <property name="suppressDate" value="false" />
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
         </commentGenerator>
         <!-- 注释控制完毕 -->
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/demos?characterEncoding=utf8"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/zone_cmdb?characterEncoding=utf8"
                         userId="root"
                         password="root">
         </jdbcConnection>
-
+        <!--是否将decimal类型转换为decimal而不是Integer-->
         <javaTypeResolver >
-            <property name="forceBigDecimals" value="false" />
+            <property name="forceBigDecimals" value="true" />
         </javaTypeResolver>
 
         <!-- 数据表对应的model 层  -->
@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
         <!-- 要对那些数据表进行生成操作，必须要有一个. -->
-        <table schema="mybatis" tableName="category" domainObjectName="Category"
+        <table schema="mybatis" tableName="cmdb_reconciliation_definition" domainObjectName="DatasourceStaleness"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
