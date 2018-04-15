@@ -15,7 +15,7 @@ public class CompleteBackpack_final {
 
         for (int item=1;item<=N;item++){
             //核心
-            //依赖数组左方的数据做判断 所以倒过来 不然赋值过程中 左方的数据丢失了
+            //恰恰和01相反 就是需要考虑已经放入i后的情况 达到O(VN)
             for (int weight=0;weight<=totalWeight;weight++){
                 if (wt[item-1] <= weight){
                     dp[weight]=Math.max(val[item-1]+dp[weight-wt[item-1]], dp[weight]);
